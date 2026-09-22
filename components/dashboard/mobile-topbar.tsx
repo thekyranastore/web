@@ -19,7 +19,12 @@ export function MobileTopBar({ shopName }: { shopName: string }) {
   return (
     <div className="sticky top-0 z-20 flex items-center gap-3 border-b bg-background px-4 py-3 sm:hidden">
       <Sheet open={open} onOpenChange={setOpen}>
-        <Button variant="ghost" size="icon" onClick={() => setOpen(true)}>
+        <Button
+          variant="ghost"
+          size="icon"
+          className="size-11 -ml-2"
+          onClick={() => setOpen(true)}
+        >
           <List className="size-5" />
         </Button>
         <SheetContent side="left" className="w-64 bg-sidebar px-4 py-6 pt-14">

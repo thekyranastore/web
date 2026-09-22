@@ -97,7 +97,7 @@ export function ProductForm({
         />
         {errors.videoUrl && <p className="text-sm text-destructive">{errors.videoUrl.message}</p>}
       </div>
-      <Button type="submit" disabled={submitting} className="rounded-full">
+      <Button type="submit" disabled={submitting} className="w-full rounded-full sm:w-auto">
         {submitting ? "Saving..." : productId ? "Save changes" : "Add product"}
       </Button>
     </form>

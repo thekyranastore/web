@@ -29,13 +29,13 @@ export function ProductsFilterBar({ defaultQuery }: { defaultQuery: string }) {
   }, [query]);
 
   return (
-    <div className="relative max-w-sm">
+    <div className="relative sm:max-w-sm">
       <MagnifyingGlassIcon className="absolute top-1/2 left-3 size-4 -translate-y-1/2 text-muted-foreground" />
       <Input
         value={query}
         onChange={(event) => setQuery(event.target.value)}
         placeholder="Search products by name"
-        className="rounded-full pl-9"
+        className="h-11 rounded-full pl-9 sm:h-9"
       />
     </div>
   );

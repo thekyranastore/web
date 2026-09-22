@@ -58,40 +58,71 @@ export function OrdersList({
   }
 
   return (
-    <Table>
-      <TableHeader>
-        <TableRow>
-          <TableHead>Customer</TableHead>
-          <TableHead>Items</TableHead>
-          <TableHead>Total</TableHead>
-          <TableHead>Status</TableHead>
-          <TableHead>Date</TableHead>
-        </TableRow>
-      </TableHeader>
-      <TableBody>
+    <>
+      <div className="flex flex-col gap-3 sm:hidden">
         {orders.map((order) => {
           const items = itemsByOrder[order.id] ?? [];
           const itemCount = items.reduce((sum, item) => sum + item.quantity, 0);
 
           return (
             <OrderDetailDialog key={order.id} order={order} items={items}>
-              <TableRow className="cursor-pointer">
-                <TableCell className="font-medium">{order.customerName}</TableCell>
-                <TableCell>
-                  {itemCount} item{itemCount === 1 ? "" : "s"}
-                </TableCell>
-                <TableCell className="tabular-nums">{formatPaise(order.totalPaise)}</TableCell>
-                <TableCell>
-                  <OrderStatusBadge status={order.status} />
-                </TableCell>
-                <TableCell className="text-muted-foreground">
-                  {order.createdAt.toLocaleDateString()}
-                </TableCell>
-              </TableRow>
+              <Card className="cursor-pointer">
+                <CardContent className="flex flex-col gap-2 p-4">
+                  <div className="flex items-start justify-between gap-2">
+                    <span className="font-medium">{order.customerName}</span>
+                    <OrderStatusBadge status={order.status} />
+                  </div>
+                  <div className="flex items-center justify-between text-sm text-muted-foreground">
+                    <span>
+                      {itemCount} item{itemCount === 1 ? "" : "s"} ·{" "}
+                      {order.createdAt.toLocaleDateString()}
+                    </span>
+                    <span className="tabular-nums font-medium text-foreground">
+                      {formatPaise(order.totalPaise)}
+                    </span>
+                  </div>
+                </CardContent>
+              </Card>
             </OrderDetailDialog>
           );
         })}
-      </TableBody>
-    </Table>
+      </div>
+
+      <Table className="hidden sm:table">
+        <TableHeader>
+          <TableRow>
+            <TableHead>Customer</TableHead>
+            <TableHead>Items</TableHead>
+            <TableHead>Total</TableHead>
+            <TableHead>Status</TableHead>
+            <TableHead>Date</TableHead>
+          </TableRow>
+        </TableHeader>
+        <TableBody>
+          {orders.map((order) => {
+            const items = itemsByOrder[order.id] ?? [];
+            const itemCount = items.reduce((sum, item) => sum + item.quantity, 0);
+
+            return (
+              <OrderDetailDialog key={order.id} order={order} items={items}>
+                <TableRow className="cursor-pointer">
+                  <TableCell className="font-medium">{order.customerName}</TableCell>
+                  <TableCell>
+                    {itemCount} item{itemCount === 1 ? "" : "s"}
+                  </TableCell>
+                  <TableCell className="tabular-nums">{formatPaise(order.totalPaise)}</TableCell>
+                  <TableCell>
+                    <OrderStatusBadge status={order.status} />
+                  </TableCell>
+                  <TableCell className="text-muted-foreground">
+                    {order.createdAt.toLocaleDateString()}
+                  </TableCell>
+                </TableRow>
+              </OrderDetailDialog>
+            );
+          })}
+        </TableBody>
+      </Table>
+    </>
   );
 }

@@ -14,5 +14,5 @@ export default async function OnboardingLayout({ children }: { children: React.R
     redirect("/dashboard");
   }
 
-  return <div className="min-h-screen">{children}</div>;
+  return <div className="min-h-dvh">{children}</div>;
 }

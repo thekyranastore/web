@@ -48,21 +48,21 @@ export function OrdersFilterBar({
   }, [query]);
 
   return (
-    <div className="flex flex-wrap items-center gap-3">
-      <div className="relative max-w-sm flex-1">
+    <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
+      <div className="relative flex-1 sm:max-w-sm">
         <MagnifyingGlassIcon className="absolute top-1/2 left-3 size-4 -translate-y-1/2 text-muted-foreground" />
         <Input
           value={query}
           onChange={(event) => setQuery(event.target.value)}
           placeholder="Search orders by customer name"
-          className="rounded-full pl-9"
+          className="h-11 rounded-full pl-9 sm:h-9"
         />
       </div>
       <Select
         defaultValue={defaultStatus}
         onValueChange={(value) => updateParams({ status: value })}
       >
-        <SelectTrigger className="w-40 rounded-full">
+        <SelectTrigger className="h-11 w-full rounded-full sm:h-9 sm:w-40">
           <SelectValue />
         </SelectTrigger>
         <SelectContent>

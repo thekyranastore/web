@@ -38,7 +38,7 @@ export function ProductGallery({
         />
       </div>
       {(imageUrls.length > 1 || embedUrl) && (
-        <div className="flex gap-2">
+        <div className="flex gap-2 overflow-x-auto pb-1">
           {imageUrls.map((url, index) => (
             <button
               key={url}

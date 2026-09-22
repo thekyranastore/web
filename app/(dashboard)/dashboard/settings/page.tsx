@@ -24,20 +24,22 @@ export default async function SettingsPage() {
 
       <div className="p-4 sm:p-6">
         <Tabs defaultValue="general">
-          <TabsList variant="line">
-            <TabsTrigger value="general" className="rounded-full">
-              General
-            </TabsTrigger>
-            <TabsTrigger value="appearance" className="rounded-full">
-              Appearance
-            </TabsTrigger>
-            <TabsTrigger value="payments" className="rounded-full">
-              Payments
-            </TabsTrigger>
-            <TabsTrigger value="delivery" className="rounded-full">
-              Delivery
-            </TabsTrigger>
-          </TabsList>
+          <div className="-mx-4 overflow-x-auto px-4 sm:mx-0 sm:px-0">
+            <TabsList variant="line">
+              <TabsTrigger value="general" className="rounded-full">
+                General
+              </TabsTrigger>
+              <TabsTrigger value="appearance" className="rounded-full">
+                Appearance
+              </TabsTrigger>
+              <TabsTrigger value="payments" className="rounded-full">
+                Payments
+              </TabsTrigger>
+              <TabsTrigger value="delivery" className="rounded-full">
+                Delivery
+              </TabsTrigger>
+            </TabsList>
+          </div>
 
           <TabsContent value="general" className="max-w-2xl pt-6">
             <Card>

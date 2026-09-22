@@ -18,7 +18,7 @@ export default async function OnboardingCategoryPage() {
   const categories = await db.select().from(shopCategories);
 
   return (
-    <div className="flex min-h-screen items-center justify-center p-4">
+    <div className="flex min-h-dvh flex-col items-center justify-start p-4 pt-10 sm:justify-center sm:pt-4">
       <Card className="w-full max-w-md">
         <CardHeader className="space-y-4">
           <StepIndicator current={2} />

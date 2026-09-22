@@ -36,7 +36,7 @@ export default async function StorefrontHomePage({
       <StorefrontHero bannerUrls={shop.bannerUrls} bannerVideoUrl={shop.bannerVideoUrl} />
 
       {shopProducts.length === 0 ? (
-        <div className="flex flex-col items-center gap-2 p-16 text-center text-muted-foreground">
+        <div className="flex flex-col items-center gap-2 p-8 text-center text-muted-foreground sm:p-16">
           <PackageIcon className="size-8" />
           <p>This store hasn&apos;t added any products yet.</p>
         </div>

@@ -29,7 +29,7 @@ export function Pagination({
   }
 
   return (
-    <div className="flex items-center justify-between gap-3 pt-2">
+    <div className="flex flex-wrap items-center justify-between gap-3 pt-2">
       <p className="text-sm text-muted-foreground">
         Page {page} of {totalPages} &middot; {totalCount} total
       </p>
@@ -37,7 +37,7 @@ export function Pagination({
         <Button
           variant="outline"
           size="sm"
-          className="rounded-full"
+          className="h-10 rounded-full sm:h-7"
           disabled={page <= 1}
           onClick={() => goTo(page - 1)}
         >
@@ -47,7 +47,7 @@ export function Pagination({
         <Button
           variant="outline"
           size="sm"
-          className="rounded-full"
+          className="h-10 rounded-full sm:h-7"
           disabled={page >= totalPages}
           onClick={() => goTo(page + 1)}
         >

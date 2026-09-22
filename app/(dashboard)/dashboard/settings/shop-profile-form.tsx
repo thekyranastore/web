@@ -53,7 +53,7 @@ export function ShopProfileForm({ defaultValues }: { defaultValues: Partial<Shop
         <Label htmlFor="description">Description</Label>
         <Textarea id="description" rows={3} {...register("description")} />
       </div>
-      <Button type="submit" disabled={submitting} className="rounded-full">
+      <Button type="submit" disabled={submitting} className="w-full rounded-full sm:w-auto">
         {submitting ? "Saving..." : "Save changes"}
       </Button>
     </form>

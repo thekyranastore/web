@@ -60,7 +60,7 @@ export default function CheckoutPage({
   }
 
   return (
-    <div className="grid gap-6 p-4 sm:grid-cols-3 sm:p-6">
+    <div className="grid gap-6 p-4 pb-24 sm:grid-cols-3 sm:p-6 sm:pb-6">
       <div className="sm:col-span-2">
         <h1 className="mb-1 text-2xl font-bold">Checkout</h1>
         <p className="mb-6 text-sm text-muted-foreground">
@@ -119,9 +119,11 @@ export default function CheckoutPage({
 
           {formError && <p className="text-sm text-destructive">{formError}</p>}
 
-          <Button type="submit" disabled={submitting} className="rounded-full sm:hidden">
-            {submitting ? "Placing order..." : `Place order · ${formatPaise(total)}`}
-          </Button>
+          <div className="fixed inset-x-0 bottom-0 z-10 border-t bg-background/95 p-4 pb-[max(1rem,env(safe-area-inset-bottom))] backdrop-blur-md sm:hidden">
+            <Button type="submit" disabled={submitting} className="h-11 w-full rounded-full">
+              {submitting ? "Placing order..." : `Place order · ${formatPaise(total)}`}
+            </Button>
+          </div>
 
           <Button type="submit" disabled={submitting} className="hidden rounded-full sm:block">
             {submitting ? "Placing order..." : "Place order"}

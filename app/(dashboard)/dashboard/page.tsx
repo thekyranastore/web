@@ -48,7 +48,7 @@ export default async function DashboardHomePage() {
           </Card>
         ) : (
           <>
-            <div className="grid gap-4 sm:grid-cols-3">
+            <div className="grid grid-cols-2 gap-4 sm:grid-cols-3">
               <Card>
                 <CardContent className="flex flex-col gap-1">
                   <p className="text-sm text-muted-foreground">Revenue</p>
@@ -93,7 +93,7 @@ export default async function DashboardHomePage() {
               <Link
                 key={order.id}
                 href={`/dashboard/orders/${order.id}`}
-                className="flex items-center justify-between gap-3 rounded-lg px-2 py-2 hover:bg-muted"
+                className="flex items-center justify-between gap-3 rounded-lg px-2 py-2.5 hover:bg-muted active:bg-muted"
               >
                 <div className="min-w-0">
                   <p className="truncate font-medium">{order.customerName}</p>

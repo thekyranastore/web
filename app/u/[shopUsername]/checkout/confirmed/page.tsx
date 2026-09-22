@@ -10,11 +10,11 @@ export default async function OrderConfirmedPage({
   const { shopUsername } = await params;
 
   return (
-    <div className="flex flex-col items-center gap-4 p-16 text-center">
+    <div className="flex flex-col items-center gap-4 p-8 text-center sm:p-16">
       <CheckCircle className="size-14 text-emerald-500" weight="fill" />
       <h1 className="text-2xl font-bold">Order placed</h1>
       <p className="text-muted-foreground">The store will contact you shortly to confirm.</p>
-      <Button asChild variant="outline" className="rounded-full">
+      <Button asChild variant="outline" className="h-11 rounded-full">
         <Link href={`/u/${shopUsername}`}>Continue shopping</Link>
       </Button>
     </div>

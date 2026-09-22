@@ -18,7 +18,7 @@ export function NotificationsMenu({ pendingOrders }: { pendingOrders: PendingOrd
   return (
     <Popover>
       <PopoverTrigger asChild>
-        <Button variant="ghost" size="icon" className="relative">
+        <Button variant="ghost" size="icon" className="relative size-11 sm:size-8">
           <Bell className="size-4" />
           {count > 0 && (
             <span className="absolute -right-0.5 -top-0.5 flex size-4 items-center justify-center rounded-full bg-primary text-[10px] font-semibold text-primary-foreground">
