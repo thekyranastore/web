@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { getCurrentShop } from "@/lib/current-shop";
+import { getStoreUrl } from "@/lib/store-url";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
@@ -15,7 +16,7 @@ export default async function SettingsPage() {
     return null;
   }
 
-  const storeUrl = `${process.env.NEXT_PUBLIC_SITE_URL}/u/${shop.username}`;
+  const storeUrl = getStoreUrl(shop.username);
 
   return (
     <div className="flex flex-col">

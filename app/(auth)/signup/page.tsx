@@ -4,7 +4,6 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { toast } from "sonner";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -16,6 +15,7 @@ import { signUpSchema, type SignUpInput } from "@/lib/validations/auth";
 export default function SignUpPage() {
   const router = useRouter();
   const [submitting, setSubmitting] = useState(false);
+  const [formError, setFormError] = useState<string | null>(null);
 
   const {
     register,
@@ -27,21 +27,26 @@ export default function SignUpPage() {
 
   async function onSubmit(values: SignUpInput) {
     setSubmitting(true);
+    setFormError(null);
 
-    const { error } = await authClient.signUp.email({
-      name: values.name,
-      email: values.email,
-      password: values.password,
-    });
+    try {
+      await authClient.signUp.email({
+        name: values.name,
+        email: values.email,
+        password: values.password,
+      });
+      router.push("/dashboard");
+    } catch (error) {
+      const code = error instanceof Object && "code" in error ? error.code : undefined;
 
-    setSubmitting(false);
-
-    if (error) {
-      toast.error(error.message ?? "Could not create your account");
-      return;
+      if (code === "USER_ALREADY_EXISTS") {
+        setFormError("An account with that email already exists. Try logging in instead.");
+      } else {
+        setFormError("Could not create your account. Check your details and try again.");
+      }
+    } finally {
+      setSubmitting(false);
     }
-
-    router.push("/dashboard");
   }
 
   return (
@@ -52,6 +57,11 @@ export default function SignUpPage() {
         </CardHeader>
         <CardContent>
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+            {formError && (
+              <p className="rounded-lg bg-destructive/10 px-3 py-2 text-sm text-destructive">
+                {formError}
+              </p>
+            )}
             <div className="space-y-2">
               <Label htmlFor="name">Your name</Label>
               <Input id="name" {...register("name")} />

@@ -6,6 +6,7 @@ import { RevenueSparkline } from "@/components/dashboard/revenue-sparkline";
 import { DashboardHeader } from "@/components/dashboard/dashboard-header";
 import { NotificationsMenu } from "@/components/dashboard/notifications-menu";
 import { getCurrentShop } from "@/lib/current-shop";
+import { getStoreUrl } from "@/lib/store-url";
 import { withShopScope } from "@/lib/tenant-db";
 import { getShopAnalytics, getPendingOrdersForShop } from "@/lib/analytics";
 import { formatPaise } from "@/lib/currency";
@@ -25,7 +26,7 @@ export default async function DashboardHomePage() {
       pendingOrders: await getPendingOrdersForShop(tx, shop.id),
     }),
   );
-  const storeUrl = `${process.env.NEXT_PUBLIC_SITE_URL}/u/${shop.username}`;
+  const storeUrl = getStoreUrl(shop.username);
   const avgOrderPaise = orderCount > 0 ? Math.round(revenuePaise / orderCount) : 0;
 
   return (
