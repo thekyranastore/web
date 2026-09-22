@@ -16,7 +16,7 @@ export default async function SettingsPage() {
     return null;
   }
 
-  const storeUrl = getStoreUrl(shop.username);
+  const storeUrl = await getStoreUrl(shop.username);
 
   return (
     <div className="flex flex-col">

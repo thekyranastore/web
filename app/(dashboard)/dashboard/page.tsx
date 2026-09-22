@@ -26,7 +26,7 @@ export default async function DashboardHomePage() {
       pendingOrders: await getPendingOrdersForShop(tx, shop.id),
     }),
   );
-  const storeUrl = getStoreUrl(shop.username);
+  const storeUrl = await getStoreUrl(shop.username);
   const avgOrderPaise = orderCount > 0 ? Math.round(revenuePaise / orderCount) : 0;
 
   return (
